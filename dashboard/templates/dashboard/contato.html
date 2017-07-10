@@ -5,59 +5,27 @@
         <div class="well">
             <h1 style="text-align: center">Contato</h1>
             <div class="table-responsive well">
-
-                <div class="input-group" style="float: right; padding-bottom: 10px;">
-                    <button class="btn btn-primary" onclick="addOrEditNewProject();">
-                        <span class="glyphicon glyphicon-plus"></span> Novo
-                    </button>
+                <form id="applicationForm" name="applicationForm" class="navbar-form" role="form">
+                    <div class="form-group" style="width: 600px; padding: 5px;">
+                        <div class="input-group" style="width: 100%">
+                            <span class="input-group-addon"><b>Nome</b></span>
+                            <input id="name" name="name" type="text" class="form-control" placeholder="Juca Bala" aria-describedby="basic-addon1" value="">
+                        </div>
+                        <div class="input-group" style="width: 100%">
+                            <span class="input-group-addon"><b>Empresa</b></span>
+                            <input id="empresa" name="empresa" type="text" class="form-control" placeholder="Fulano Store" aria-describedby="basic-addon1" value="">
+                        </div>
+                        <div class="input-group" style="width: 100%">
+                            <span class="input-group-addon"><b>E-mail</b></span>
+                            <input id="email" name="email" type="text" class="form-control" placeholder="jucabala@fulano.com" aria-describedby="basic-addon1" value="">
+                        </div>
+                    </div>
+                </form>
+                <div class="navbar-form">
+                    <div class="input-group" style="width: 600px; padding: 5px; text-align: right">
+                        <button id="btDeploy" class="btn btn-primary" onclick="">Enviar</button>
+                    </div>
                 </div>
-{#                    <div class="input-group">#}
-{#                        <input id="search-input" type="text" class="form-control" placeholder="Pesquise por nome do projeto" onkeyup="((event.keyCode == 13) ? filterProjects(1) : event)">#}
-{#                            <span class="input-group-btn">#}
-{#                                <button class="btn" onclick="filterProjects(1)">#}
-{#                                    <span class="glyphicon glyphicon-search"></span>#}
-{#                                </button>#}
-{#                            </span>#}
-{#                    </div>#}
-{#                    <ul style="text-align: center">#}
-{#                        <ul id="paginator_header" style="margim-bottom: 5px;" class="pagination">#}
-{#                            <li class="active"><a title="Current page is 1">1</a></li>#}
-{#                        </ul>#}
-{#                    </ul>#}
-                <table id="table" class="table table-striped table-bordered" style="text-align: center; margin-top: 10px; margin-left: 10px">
-                    <thead>
-                        <tr>
-                            <td><strong>Id</strong></td>
-                            <td><strong>Nome</strong></td>
-                            <td><strong>Versão</strong></td>
-                            <td><strong>Repositório Git</strong></td>
-                            <td><strong></strong></td>
-                        </tr>
-                    </thead>
-                    <tbody id="table-body">
-                        {% for project in projects %}
-                        <tr id="project{{ project.id }}">
-                            <td><strong>{{ project.id }}</strong></td>
-                            <td><strong>{{ project.name }}</strong></td>
-                            <td><strong>{{ project.version }}</strong></td>
-                            <td><strong>{{ project.url_repo_git }}</strong></td>
-                            <td style="text-align: center">
-                                <button class="btn btn-default" type="button" onclick="addOrEditNewProject({{ project.id }});">Editar</button>
-                                <button class="btn btn-default" type="button" onclick="removeProject({{ project.id }});">Excluir</button>
-                            </td>
-                        </tr>
-                        {% empty %}
-                            <p>Nenhum registro encontrado</p>
-                        {% endfor %}
-                    </tbody>
-                </table>
-{#                    <ul style="text-align: center">#}
-{#                        <ul id="paginator_footer" class="pagination">#}
-{#                            <li class="active">#}
-{#                                <a title="Current page is 1">1</a>#}
-{#                            </li>#}
-{#                        </ul>#}
-{#                    </ul>#}
             </div>
         </div>
     </div>
