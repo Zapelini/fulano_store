@@ -1,0 +1,9 @@
+.pappw-alert {
+	display: block;
+	z-index: 2000;
+	width: 600px;
+	top: 70px;
+	left: 50%;
+	position: absolute;
+	margin-left: -315px;
+}
