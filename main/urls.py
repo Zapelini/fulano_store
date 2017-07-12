@@ -16,13 +16,15 @@ Including another URLconf
 from django.conf.urls import url
 from django.contrib import admin
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
+from django.views.generic import RedirectView
 
 from dashboard import views
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
 
-    url(r'^$', views.home_page, name='home'),
+    url(r'^$', RedirectView.as_view(url='/home', permanent=False), name='home'),
+    url(r'^home$', views.home_page, name='home'),
     url(r'^preco$', views.preco_view, name='preco'),
     url(r'^contato$', views.contato_view, name='contato'),
     url(r'^sobre$', views.sobre_view, name='sobre'),

@@ -1,5 +1,13 @@
 {% extends 'dashboard/base.html' %}
 
+{% block head %}
+    <script type="text/javascript">
+        function send_contact() {
+          alert("Enviando contato");
+          UserTrace().send(document.getElementById('email').value);
+        };
+    </script>
+{% endblock %}
 {% block body %}
     <div>
         <div class="well">
@@ -17,13 +25,13 @@
                         </div>
                         <div class="input-group" style="width: 100%">
                             <span class="input-group-addon"><b>E-mail</b></span>
-                            <input id="email" name="email" type="text" class="form-control" placeholder="jucabala@fulano.com" aria-describedby="basic-addon1" value="">
+                            <input id="email" name="email" type="text" class="form-control" placeholder="jucabala@fulano.com" aria-describedby="basic-addon1" value="jucabala@fulano.com">
                         </div>
                     </div>
                 </form>
                 <div class="navbar-form">
                     <div class="input-group" style="width: 600px; padding: 5px; text-align: right">
-                        <button id="btDeploy" class="btn btn-primary" onclick="">Enviar</button>
+                        <button id="btDeploy" class="btn btn-primary" onclick="send_contact()">Enviar</button>
                     </div>
                 </div>
             </div>
