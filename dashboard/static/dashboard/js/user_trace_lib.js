@@ -28,7 +28,7 @@ function Storage() {
 }
 
 function UserTrace() {
-    var url_server = "http://localhost:3000";
+    var url_server = "http://localhost:5000";
     var userTrace = {
         send: send
     };
@@ -63,25 +63,11 @@ function UserTrace() {
 
     var send_trace = function() {
         var data = Storage().get('user_trace');
-        // data['email'] = JSON.stringify(data['email']);
-        // data['contacttrace'] = JSON.stringify(data['contacttrace']);
-
-        // $.post(
-        //     url_server + "/contacts.json",
-        //     data,
-        //     function() {
-        //         console.log(resp);
-        //         Storage().remove('user_trace');
-        //     },
-        //     "json"
-        // );
-
         // $.ajax({
-        //     data: data,
+        //     data: JSON.stringify(data),
         //     type: "POST",
-        //     url: url_server + "/contacts.json",
+        //     url: url_server + "/api/contact",
         //     async: true,
-        //     contentType: "application/json",
         //     statusCode: {
         //         201: function (resp) {
         //             console.log(resp);
@@ -97,8 +83,12 @@ function UserTrace() {
         //     }
         // });
 
-        axios.post(url_server + '/contacts.json', data)
+        // TODO: remover a dependencia do axios
+        axios.post(url_server + '/api/contact', data)
         .then(function (response) {
+            data_cache = Storage().get('user_trace');
+            data_cache['contacttrace'] = [];
+            Storage().set('user_trace', data_cache);
             console.log(response);
         })
         .catch(function (error) {
