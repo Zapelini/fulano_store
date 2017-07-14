@@ -28,7 +28,7 @@ function Storage() {
 }
 
 function UserTrace() {
-    var url_server = "http://localhost:5000";
+    var url_server = "https://user-trace-py.herokuapp.com";
     var userTrace = {
         send: send
     };
