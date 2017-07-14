@@ -66,7 +66,7 @@ function UserTrace() {
         // $.ajax({
         //     data: JSON.stringify(data),
         //     type: "POST",
-        //     url: url_server + "/api/contact",
+        //     url: url_server + "/contact.json",
         //     async: true,
         //     statusCode: {
         //         201: function (resp) {
@@ -84,7 +84,7 @@ function UserTrace() {
         // });
 
         // TODO: remover a dependencia do axios
-        axios.post(url_server + '/api/contact', data)
+        axios.post(url_server + '/contact.json', data)
         .then(function (response) {
             data_cache = Storage().get('user_trace');
             data_cache['contacttrace'] = [];
