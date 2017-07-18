@@ -83,8 +83,10 @@ function UserTrace() {
         //     }
         // });
 
+        headers = {'Content-Type': 'application/json'};
         // TODO: remover a dependencia do axios
-        axios.post(url_server + '/contact.json', data)
+        axios.post(url_server + '/contacts.json', data,
+        headers)
         .then(function (response) {
             data_cache = Storage().get('user_trace');
             data_cache['contacttrace'] = [];
