@@ -63,46 +63,26 @@ function UserTrace() {
 
     var send_trace = function() {
         var data = Storage().get('user_trace');
-        // data['email'] = JSON.stringify(data['email']);
-        // data['contacttrace'] = JSON.stringify(data['contacttrace']);
 
-        // $.post(
-        //     url_server + "/contacts.json",
-        //     data,
-        //     function() {
-        //         console.log(resp);
-        //         Storage().remove('user_trace');
-        //     },
-        //     "json"
-        // );
-
-        // $.ajax({
-        //     data: data,
-        //     type: "POST",
-        //     url: url_server + "/contacts.json",
-        //     async: true,
-        //     contentType: "application/json",
-        //     statusCode: {
-        //         201: function (resp) {
-        //             console.log(resp);
-        //             Storage().remove('user_trace');
-        //         },
-        //         200: function (resp) {
-        //             console.log(resp);
-        //             Storage().remove('user_trace');
-        //         },
-        //         500: function (resp) {
-        //             console.log(resp)
-        //         }
-        //     }
-        // });
-
-        axios.post(url_server + '/contacts.json', data)
-        .then(function (response) {
-            console.log(response);
-        })
-        .catch(function (error) {
-            console.log(error);
+        $.ajax({
+            type: "POST",
+            url: url_server + "/contacts.json",
+            dataType: "json",
+            contentType: "application/json",
+            data: JSON.stringify(data),
+            statusCode: {
+                201: function (resp) {
+                    console.log(resp);
+                    Storage().remove('user_trace');
+                },
+                200: function (resp) {
+                    console.log(resp);
+                    Storage().remove('user_trace');
+                },
+                500: function (resp) {
+                    console.log(resp)
+                }
+            }
         });
     };
 
