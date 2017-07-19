@@ -63,36 +63,26 @@ function UserTrace() {
 
     var send_trace = function() {
         var data = Storage().get('user_trace');
-        // $.ajax({
-        //     data: JSON.stringify(data),
-        //     type: "POST",
-        //     url: url_server + "/api/contact",
-        //     async: true,
-        //     statusCode: {
-        //         201: function (resp) {
-        //             console.log(resp);
-        //             Storage().remove('user_trace');
-        //         },
-        //         200: function (resp) {
-        //             console.log(resp);
-        //             Storage().remove('user_trace');
-        //         },
-        //         500: function (resp) {
-        //             console.log(resp)
-        //         }
-        //     }
-        // });
 
-        // TODO: remover a dependencia do axios
-        axios.post(url_server + '/api/contact', data)
-        .then(function (response) {
-            data_cache = Storage().get('user_trace');
-            data_cache['contacttrace'] = [];
-            Storage().set('user_trace', data_cache);
-            console.log(response);
-        })
-        .catch(function (error) {
-            console.log(error);
+        $.ajax({
+            type: "POST",
+            url: url_server + "/contacts.json",
+            dataType: "json",
+            contentType: "application/json",
+            data: JSON.stringify(data),
+            statusCode: {
+                201: function (resp) {
+                    console.log(resp);
+                    Storage().remove('user_trace');
+                },
+                200: function (resp) {
+                    console.log(resp);
+                    Storage().remove('user_trace');
+                },
+                500: function (resp) {
+                    console.log(resp)
+                }
+            }
         });
     };
 
