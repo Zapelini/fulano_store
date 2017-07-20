@@ -61,6 +61,12 @@ function UserTrace() {
         return data_cache;
     };
 
+    var clear_trace = function() {
+        data = Storage().get('user_trace');
+        data["contacttrace"] = [];
+        Storage().set('user_trace', data);
+    };
+
     var send_trace = function() {
         var data = Storage().get('user_trace');
 
@@ -73,11 +79,11 @@ function UserTrace() {
             statusCode: {
                 201: function (resp) {
                     console.log(resp);
-                    Storage().remove('user_trace');
+                    clear_trace();
                 },
                 200: function (resp) {
                     console.log(resp);
-                    Storage().remove('user_trace');
+                    clear_trace();
                 },
                 500: function (resp) {
                     console.log(resp)
@@ -102,7 +108,7 @@ function UserTrace() {
 
         data_cache = Storage().get('user_trace');
         if (data_cache !== null){
-            data_cache = get_data_cache(data_cache, email, url_pathname, access_date);
+            data_cache = get_data_cache(data_cache, data_cache['email'], url_pathname, access_date);
             //user_identifier = hashCode(new Date().toLocaleString());
         }
         else {
